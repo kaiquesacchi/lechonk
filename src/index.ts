@@ -1,15 +1,3 @@
-import { Command } from "commander";
-import { getVersion } from "./core-utils/getVersion";
-
-const program = new Command();
-
-program.version(getVersion()).name("dev");
-
-program
-  .command("toast <name>")
-  .action((name: string) => {
-    console.log(`Hello, ${name}!`);
-  })
-  .description("Toasts a name to check if the CLI works");
+import program from "./core-utils/program";
 
 program.parse(process.argv);
