@@ -1,5 +1,21 @@
 import { z } from "zod";
 import parseInput from "../../core-utils/parseInput";
+import { Command } from "commander";
+
+export default function registerGenerateCpf(program: Command) {
+  program
+    .command("generate.cpf")
+    .option("-a --amount <amount>", "The amount of CPFs to generate", "1")
+    .option("-F --formatted", "Format the CPFs", false)
+    .option("-S --sorted", "Sorts the list", false)
+    .option(
+      "-s --startsWith <startsWith>",
+      "Up to the first 9 digits of the CPFs",
+      ""
+    )
+    .action(cpf)
+    .description("Generates a list of CPFs");
+}
 
 const InputSchema = z.object({
   amount: z.coerce
@@ -29,7 +45,7 @@ const InputSchema = z.object({
     .default(""),
 });
 
-export default function cpf(_name: string, options: unknown) {
+function cpf(_name: string, options: unknown) {
   const parsedInput = parseInput(options, InputSchema);
 
   let cpfs: string[] = [];
