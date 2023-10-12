@@ -11,7 +11,7 @@ export default function registerFormatJson(program: Command) {
   program
     .command("format.json <json>")
     .option("--no-color", "Disable colorized output")
-    .option("-s --spaces <spaces>", "Number of spaces to indent", "2")
+    .option("-s, --spaces <spaces>", "Number of spaces to indent", "2")
     .action(json)
     .description("Formats a JSON file");
 }
