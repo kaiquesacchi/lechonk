@@ -30,6 +30,7 @@ const InputSchema = z.object({
     .refine(
       (startsWith) =>
         ![
+          "000000000",
           "111111111",
           "222222222",
           "333333333",
@@ -45,7 +46,7 @@ const InputSchema = z.object({
     .default(""),
 });
 
-function cpf(_name: string, options: unknown) {
+function cpf(options: unknown) {
   const parsedInput = parseInput(options, InputSchema);
 
   let cpfs: string[] = [];
