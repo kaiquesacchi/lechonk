@@ -1,6 +1,6 @@
 import { z } from "zod";
 import parseInput from "../../core-utils/parseInput";
-import { Command } from "commander";
+import type { Command } from "@commander-js/extra-typings";
 import picocolors from "picocolors";
 
 const BOOLEAN_REGEX = /^(true|false)$/;

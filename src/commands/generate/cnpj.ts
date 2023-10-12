@@ -1,6 +1,6 @@
 import { z } from "zod";
 import parseInput from "../../core-utils/parseInput";
-import { Command } from "commander";
+import type { Command } from "@commander-js/extra-typings";
 
 export default function registerGenerateCnpj(program: Command) {
   program

@@ -1,4 +1,4 @@
-import { Command } from "commander";
+import type { Command } from "@commander-js/extra-typings";
 
 export default function registerToast(program: Command) {
   program
