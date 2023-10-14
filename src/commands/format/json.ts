@@ -2,6 +2,7 @@ import { z } from "zod";
 import parseInput from "../../core-utils/parseInput";
 import type { Command } from "@commander-js/extra-typings";
 import picocolors from "picocolors";
+import partialJsonParser from "partial-json-parser";
 
 const BOOLEAN_REGEX = /^(true|false)$/;
 const NUMBER_REGEX = /^-?(0|[1-9]\d*)(\.\d+)?([eE][-+]?\d+)?$/;
@@ -13,20 +14,33 @@ export default function registerFormatJson(program: Command) {
     .option("--no-color", "Disable colorized output")
     .option("-s, --spaces <spaces>", "Number of spaces to indent", "2")
     .action(json)
-    .description("Formats a JSON file");
+    .description(
+      "Formats a JSON string. If the JSON is incomplete, it will be partially parsed."
+    );
 }
 
 const InputSchema = z.object({
   color: z.boolean().default(true),
   json: z.string().transform((json, ctx) => {
     try {
-      return JSON.parse(json);
+      return {
+        complete: true,
+        value: JSON.parse(json),
+      } as const;
     } catch (e) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Invalid JSON" + (e instanceof Error ? `: ${e.message}` : ""),
-      });
-      return z.NEVER;
+      try {
+        return {
+          complete: false,
+          value: partialJsonParser(json),
+        } as const;
+      } catch {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message:
+            "Invalid JSON" + (e instanceof Error ? `: ${e.message}` : ""),
+        });
+        return z.NEVER;
+      }
     }
   }),
   spaces: z.coerce.number().default(2),
@@ -35,12 +49,19 @@ const InputSchema = z.object({
 function json(argument: string, options: object) {
   const parsedInput = parseInput({ json: argument, ...options }, InputSchema);
 
-  let result = JSON.stringify(parsedInput.json, null, parsedInput.spaces);
+  let result = JSON.stringify(parsedInput.json.value, null, parsedInput.spaces);
 
   if (parsedInput.color) {
     result = colorizeJson(result);
   }
 
+  if (!parsedInput.json.complete) {
+    console.log(
+      picocolors.bgYellow(
+        "The provided JSON was incomplete! It was partially parsed."
+      )
+    );
+  }
   console.log(result);
 }
 

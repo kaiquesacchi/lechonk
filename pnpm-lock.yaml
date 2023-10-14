@@ -26,6 +26,9 @@ dependencies:
   js-base64:
     specifier: ^3.7.5
     version: 3.7.5
+  partial-json-parser:
+    specifier: 1.2.2
+    version: 1.2.2
   picocolors:
     specifier: ^1.0.0
     version: 1.0.0
@@ -189,6 +192,10 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       mimic-fn: 4.0.0
+    dev: false
+
+  /partial-json-parser@1.2.2:
+    resolution: {integrity: sha512-4LH14R2aykVDWefU2qJjL1Rli610fjKxOJQ3SjKwWzKYJvIkjflcGtsd1Ix09U7UP5G6V1GyHtbgPjknFD/G7w==}
     dev: false
 
   /path-key@3.1.1:
