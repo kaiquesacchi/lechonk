@@ -4,19 +4,23 @@ import { getVersion } from "./getVersion";
 import registerDecodeBase64 from "../commands/decode/base64";
 import registerEncodeBase64 from "../commands/encode/base64";
 import registerFormatJson from "../commands/format/json";
-import registerGenerateCnpj from "../commands/generate/cnpj";
 import registerGenerateCpf from "../commands/generate/cpf";
-import registerToast from "../commands/toast";
+import toast from "../commands/toast";
+
+import interactive from "../commands/interactive";
+import cnpj from "../commands/generate/cnpj";
 
 const program = new Command("dev");
 
 program.version(getVersion());
 
+program.action(interactive);
+
 registerDecodeBase64(program);
 registerEncodeBase64(program);
 registerFormatJson(program);
-registerGenerateCnpj(program);
 registerGenerateCpf(program);
-registerToast(program);
+cnpj.nonInteractive(program);
+toast.nonInteractive(program);
 
 export default program;

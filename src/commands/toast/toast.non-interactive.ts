@@ -1,12 +1,9 @@
 import type { Command } from "@commander-js/extra-typings";
+import toastUseCase from "./toast.use-case";
 
-export default function registerToast(program: Command) {
+export default function nonInteractive(program: Command) {
   program
     .command("toast <name>")
-    .action(toast)
+    .action(toastUseCase)
     .description("Toasts a name to check if the CLI works");
-}
-
-function toast(name: string) {
-  console.log(`Hello, ${name}!`);
 }

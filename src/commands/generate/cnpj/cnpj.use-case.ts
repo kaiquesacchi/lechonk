@@ -1,21 +1,5 @@
 import { z } from "zod";
-import parseInput from "../../core-utils/parseInput";
-import type { Command } from "@commander-js/extra-typings";
-
-export default function registerGenerateCnpj(program: Command) {
-  program
-    .command("generate.cnpj")
-    .option("-a, --amount <amount>", "The amount of CNPJs to generate", "1")
-    .option("-F, --formatted", "Format the CNPJs", false)
-    .option("-S, --sorted", "Sorts the list", false)
-    .option(
-      "-s --startsWith <startsWith>",
-      "Up to the first 12 digits of the CNPJs",
-      ""
-    )
-    .action(cnpj)
-    .description("Generates a list of CNPJs");
-}
+import parseInput from "../../../core-utils/parseInput";
 
 const InputSchema = z.object({
   amount: z.coerce
@@ -46,7 +30,7 @@ const InputSchema = z.object({
     .default(""),
 });
 
-function cnpj(options: unknown) {
+export function cnpjUseCase(options: unknown) {
   const parsedInput = parseInput(options, InputSchema);
 
   let CNPJs: string[] = [];
