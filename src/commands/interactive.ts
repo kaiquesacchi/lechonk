@@ -17,7 +17,7 @@ const interactiveOptions = [
 ] satisfies { value: InteractiveOption; label: string }[];
 
 export default async function interactive() {
-  p.intro("DevTools CLI - Interactive mode");
+  p.intro("Lechonk CLI - Interactive mode");
   const option = (await p.select({
     message: "What would you like to do?",
     options: interactiveOptions,

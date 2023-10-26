@@ -10,11 +10,15 @@ import toast from "../commands/toast";
 import interactive from "../commands/interactive";
 import cnpj from "../commands/generate/cnpj";
 
-const program = new Command("dev");
+const program = new Command("le");
 
 program.version(getVersion());
 
-program.action(interactive);
+program
+  .action(interactive)
+  .description(
+    "Set of helpful dev utilities. Call without a [command] to use the interactive mode."
+  );
 
 registerDecodeBase64(program);
 registerEncodeBase64(program);
