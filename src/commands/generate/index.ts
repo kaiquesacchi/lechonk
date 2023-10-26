@@ -1,5 +1,6 @@
 import * as p from "@clack/prompts";
 import cnpj from "./cnpj";
+import cpf from "./cpf";
 
 type InteractiveOption = "CNPJ" | "CPF";
 
@@ -26,7 +27,7 @@ export default {
         await cnpj.interactive();
         break;
       case "CPF":
-        // await cpf.interactive();
+        await cpf.interactive();
         break;
     }
   },
