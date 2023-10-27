@@ -1,6 +1,7 @@
 import interactivePath from "../core-utils/interactive-path";
 
 import decode from "./decode";
+import encode from "./encode";
 import format from "./format";
 import generate from "./generate";
 import toast from "./toast";
@@ -13,6 +14,11 @@ export default async function interactive() {
         value: "DECODE",
         label: "Decode data",
         callback: decode.interactive,
+      },
+      {
+        value: "ENCODE",
+        label: "Encode data",
+        callback: encode.interactive,
       },
       {
         value: "FORMAT",
