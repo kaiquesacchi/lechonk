@@ -2,10 +2,15 @@ import * as p from "@clack/prompts";
 
 import generate from "./generate";
 import toast from "./toast";
+import format from "./format";
 
-type InteractiveOption = "GENERATE" | "TOAST";
+type InteractiveOption = "FORMAT" | "GENERATE" | "TOAST";
 
 const interactiveOptions = [
+  {
+    value: "FORMAT",
+    label: "Format data",
+  },
   {
     value: "GENERATE",
     label: "Generate data",
@@ -24,6 +29,10 @@ export default async function interactive() {
   })) as InteractiveOption;
 
   switch (option) {
+    case "FORMAT":
+      await format.interactive();
+      break;
+
     case "GENERATE":
       await generate.interactive();
       break;

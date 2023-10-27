@@ -1,23 +1,11 @@
 import { z } from "zod";
-import parseInput from "../../core-utils/parseInput";
-import type { Command } from "@commander-js/extra-typings";
+import parseInput from "../../../core-utils/parseInput";
 import picocolors from "picocolors";
 import partialJsonParser from "partial-json-parser";
 
 const BOOLEAN_REGEX = /^(true|false)$/;
 const NUMBER_REGEX = /^-?(0|[1-9]\d*)(\.\d+)?([eE][-+]?\d+)?$/;
 const STRING_REGEX = /^"(?:[^"\\]|\\["\\/bfnrt]|\\u[a-fA-F0-9]{4})*"$/;
-
-export default function registerFormatJson(program: Command) {
-  program
-    .command("format.json <json>")
-    .option("--no-color", "Disable colorized output")
-    .option("-s, --spaces <spaces>", "Number of spaces to indent", "2")
-    .action(json)
-    .description(
-      "Formats a JSON string. If the JSON is incomplete, it will be partially parsed."
-    );
-}
 
 const InputSchema = z.object({
   color: z.boolean().default(true),
@@ -46,7 +34,7 @@ const InputSchema = z.object({
   spaces: z.coerce.number().default(2),
 });
 
-function json(argument: string, options: object) {
+export default function jsonUseCase(argument: string, options: object) {
   const parsedInput = parseInput({ json: argument, ...options }, InputSchema);
 
   let result = JSON.stringify(parsedInput.json.value, null, parsedInput.spaces);
