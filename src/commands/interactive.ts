@@ -1,12 +1,19 @@
+import interactivePath from "../core-utils/interactive-path";
+
+import decode from "./decode";
+import format from "./format";
 import generate from "./generate";
 import toast from "./toast";
-import format from "./format";
-import interactivePath from "../core-utils/interactive-path";
 
 export default async function interactive() {
   interactivePath({
     query: "What do you want to do?",
     options: [
+      {
+        value: "DECODE",
+        label: "Decode data",
+        callback: decode.interactive,
+      },
       {
         value: "FORMAT",
         label: "Format data",
