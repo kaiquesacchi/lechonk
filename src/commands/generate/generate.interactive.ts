@@ -1,32 +1,21 @@
-import * as p from "@clack/prompts";
 import cnpj from "./cnpj";
 import cpf from "./cpf";
-
-type InteractiveOption = "CNPJ" | "CPF";
-
-const interactiveOptions = [
-  {
-    value: "CNPJ",
-    label: "CNPJ",
-  },
-  {
-    value: "CPF",
-    label: "CPF",
-  },
-] satisfies { value: InteractiveOption; label: string }[];
+import interactivePath from "../../core-utils/interactive-path";
 
 export default async function interactive() {
-  const option = (await p.select({
-    message: "What type of data do you want to generate?",
-    options: interactiveOptions,
-  })) as InteractiveOption;
-
-  switch (option) {
-    case "CNPJ":
-      await cnpj.interactive();
-      break;
-    case "CPF":
-      await cpf.interactive();
-      break;
-  }
+  interactivePath({
+    query: "What type of data do you want to generate?",
+    options: [
+      {
+        value: "CNPJ",
+        label: "CNPJ",
+        callback: cnpj.interactive,
+      },
+      {
+        value: "CPF",
+        label: "CPF",
+        callback: cpf.interactive,
+      },
+    ],
+  });
 }
