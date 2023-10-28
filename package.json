@@ -25,6 +25,7 @@
     "zod": "^3.22.3"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.26.2",
     "@types/fs-extra": "^11.0.2",
     "@types/node": "^20.8.2",
     "type-fest": "^4.3.3",
