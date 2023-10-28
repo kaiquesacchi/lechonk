@@ -1,6 +1,6 @@
 {
   "name": "lechonk",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Set of helpful dev utilities organized as a CLI",
   "bin": {
     "le": "dist/index.js"

@@ -1,0 +1,7 @@
+# lechonk
+
+## 0.1.0
+
+### Minor Changes
+
+- 818a6bc: Added interactive support to generate.cpf, format.json, decode.base64, and encode.base64.
