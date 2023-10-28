@@ -1,5 +1,11 @@
 # lechonk
 
+## 0.1.1
+
+### Patch Changes
+
+- 1030f1a: Added npm-ignore
+
 ## 0.1.0
 
 ### Minor Changes
