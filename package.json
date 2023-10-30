@@ -2,16 +2,25 @@
   "name": "lechonk",
   "version": "0.1.1",
   "description": "Set of helpful dev utilities organized as a CLI",
+  "author": "Kaique Sacchi",
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/kaiquesacchi/lechonk#readme",
+  "repository": "github:kaiquesacchi/lechonk",
+  "main": "dist/index.js",
+  "keywords": [
+    "cli",
+    "utilities",
+    "utils",
+    "dev",
+    "tools",
+    "devtools"
+  ],
   "bin": {
     "le": "dist/index.js"
   },
-  "main": "dist/index.js",
   "scripts": {
     "dev": "tsc -w"
   },
-  "keywords": [],
-  "author": "Kaique Sacchi",
-  "license": "ISC",
   "dependencies": {
     "@clack/prompts": "^0.7.0",
     "@commander-js/extra-typings": "^11.0.0",
