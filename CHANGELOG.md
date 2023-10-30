@@ -1,5 +1,11 @@
 # lechonk
 
+## 0.2.0
+
+### Minor Changes
+
+- 6e32667: updated package.json
+
 ## 0.1.1
 
 ### Patch Changes
