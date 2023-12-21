@@ -1,5 +1,5 @@
 import { z } from "zod";
-import parseInput from "../../../core-utils/parseInput";
+import parseInput from "../../../core/parseInput";
 
 const InputSchema = z.object({
   amount: z.coerce

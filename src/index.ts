@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import program from "./core-utils/program";
+import program from "./core/program";
 
 if (process.stdin.isTTY) {
   program.parse(process.argv);

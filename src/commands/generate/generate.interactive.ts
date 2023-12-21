@@ -1,6 +1,6 @@
 import cnpj from "./cnpj";
 import cpf from "./cpf";
-import interactivePath from "../../core-utils/interactive-path";
+import interactivePath from "../../core/interactive-path";
 
 export default async function interactive() {
   interactivePath({

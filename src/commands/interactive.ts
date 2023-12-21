@@ -1,4 +1,4 @@
-import interactivePath from "../core-utils/interactive-path";
+import interactivePath from "../core/interactive-path";
 
 import decode from "./decode";
 import encode from "./encode";

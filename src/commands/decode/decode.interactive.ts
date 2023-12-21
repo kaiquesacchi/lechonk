@@ -1,4 +1,4 @@
-import interactivePath from "../../core-utils/interactive-path";
+import interactivePath from "../../core/interactive-path";
 import base64 from "./base64";
 
 export default async function interactive() {

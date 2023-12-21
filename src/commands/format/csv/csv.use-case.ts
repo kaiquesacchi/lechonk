@@ -1,5 +1,5 @@
 import { z } from "zod";
-import parseInput from "../../../core-utils/parseInput";
+import parseInput from "../../../core/parseInput";
 import { parse } from "csv-parse/sync";
 
 const InputSchema = z.object({
