@@ -56,4 +56,8 @@ le -h
 le toast Lechonk # outputs: `Hello, Lechonk!`
 le encode.base64 "Lechonk" # outputs: `TGVjaG9uaw==`
 le decode.base64 "TGVjaG9uaw==" # outputs: `Lechonk`
+
+# Piping is also supported
+echo 'Lechonk' > test.txt
+cat test.txt | le encode.base # outputs: `TGVjaG9uaw==`
 ```
