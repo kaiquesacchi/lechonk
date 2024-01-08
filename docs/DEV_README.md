@@ -15,3 +15,11 @@ When enough changes were made, generate a new version with all current changes, 
 ```sh
 pnpm changeset version
 ```
+
+# Publishing to NPM
+
+After committing the new version, run:
+
+```sh
+pnpm publish
+```
