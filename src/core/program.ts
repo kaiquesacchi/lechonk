@@ -1,3 +1,4 @@
+import "@total-typescript/ts-reset";
 import { Command } from "@commander-js/extra-typings";
 import { getVersion } from "./getVersion";
 
