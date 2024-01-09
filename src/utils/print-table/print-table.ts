@@ -10,7 +10,7 @@ export default function printTable(input: {
         input.maxColumnLength,
         Math.max(
           header.length,
-          ...(input.body[index]?.map((row) => row.length) ?? [])
+          ...input.body.map((row) => row[index]?.length ?? 0)
         )
       )
     );

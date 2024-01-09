@@ -3,10 +3,6 @@ import printTable from "./print-table";
 describe("utils/print-table", () => {
   const spyConsole = jest.spyOn(console, "log");
 
-  beforeEach(() => {
-    spyConsole.mockReset();
-  });
-
   it("should print a minimal table", () => {
     printTable({
       header: ["a", "b", "c"],
