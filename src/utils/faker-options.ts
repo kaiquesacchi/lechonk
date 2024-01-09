@@ -1,4 +1,5 @@
 import { faker } from "@faker-js/faker";
+import picocolors from "picocolors";
 
 const financeOptions = [
   "account",
@@ -43,3 +44,11 @@ export default {
   internet: internetOptions,
   person: personOptions,
 };
+
+export const availableOptionsFormatted = `${picocolors.bold(
+  picocolors.bgYellow("# Person")
+)}\n${personOptions.join("\n")}\n\n${picocolors.bold(
+  picocolors.bgYellow("# Internet")
+)}\n${internetOptions.join("\n")}\n\n${picocolors.bold(
+  picocolors.bgYellow("# Finance")
+)}\n${financeOptions.join("\n")}`;
