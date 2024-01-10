@@ -1,5 +1,11 @@
 # lechonk
 
+## 0.4.0
+
+### Minor Changes
+
+- Added new data types to generate
+
 ## 0.3.0
 
 ### Minor Changes
