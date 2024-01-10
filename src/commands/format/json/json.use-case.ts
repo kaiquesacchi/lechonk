@@ -2,10 +2,7 @@ import { z } from "zod";
 import parseInput from "../../../core/parseInput";
 import picocolors from "picocolors";
 import partialJsonParser from "partial-json-parser";
-
-const BOOLEAN_REGEX = /^(true|false)$/;
-const NUMBER_REGEX = /^-?(0|[1-9]\d*)(\.\d+)?([eE][-+]?\d+)?$/;
-const STRING_REGEX = /^"(?:[^"\\]|\\["\\/bfnrt]|\\u[a-fA-F0-9]{4})*"$/;
+import colorizeValue from "../../../utils/colorize-value/colorize-value";
 
 const InputSchema = z.object({
   color: z.boolean().default(true),
@@ -54,18 +51,6 @@ export default function jsonUseCase(argument: string, options: object) {
 }
 
 function colorizeJson(input: string) {
-  function applyColor(str: string) {
-    if (str.match(BOOLEAN_REGEX)) {
-      return picocolors.cyan(str);
-    } else if (str.match(NUMBER_REGEX)) {
-      return picocolors.yellow(str);
-    } else if (str.match(STRING_REGEX)) {
-      return picocolors.green(str);
-    } else {
-      return picocolors.gray(str);
-    }
-  }
-
   return input
     .split("\n")
     .map((line) => {
@@ -76,7 +61,7 @@ function colorizeJson(input: string) {
           endsInComma = true;
           splitted[1] = splitted[1].slice(0, -1);
         }
-        return `${splitted[0]}: ${applyColor(splitted[1] ?? "")}${
+        return `${splitted[0]}: ${colorizeValue(splitted[1] ?? "")}${
           endsInComma ? "," : ""
         }`;
       } else return line;
